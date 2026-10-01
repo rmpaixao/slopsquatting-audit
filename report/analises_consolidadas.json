@@ -1,0 +1,105 @@
+{
+  "resumo": {
+    "total_registros": 1258,
+    "taxa_geral_alucinacao_%": 3.42,
+    "total_alucinacoes": 38
+  },
+  "por_modelo": {
+    "GPT-OSS-20B": {
+      "Total": 70,
+      "Alucinações": 1,
+      "Taxa_%": 1.4285714285714286
+    },
+    "GPT-OSS-120B": {
+      "Total": 90,
+      "Alucinações": 1,
+      "Taxa_%": 1.1111111111111112
+    },
+    "Gemini-3.1-Flash-Lite": {
+      "Total": 78,
+      "Alucinações": 0,
+      "Taxa_%": 0.0
+    },
+    "Mistral-Nemo": {
+      "Total": 256,
+      "Alucinações": 15,
+      "Taxa_%": 5.859375
+    },
+    "Codestral": {
+      "Total": 98,
+      "Alucinações": 8,
+      "Taxa_%": 8.16326530612245
+    },
+    "OpenRouter-Free": {
+      "Total": 80,
+      "Alucinações": 0,
+      "Taxa_%": 0.0
+    },
+    "Nemotron-3-Nano": {
+      "Total": 81,
+      "Alucinações": 2,
+      "Taxa_%": 2.4691358024691357
+    },
+    "Minimax-m3-Free": {
+      "Total": 144,
+      "Alucinações": 2,
+      "Taxa_%": 1.3888888888888888
+    },
+    "Inclusionai-Ling-3.0-flash-fin-free": {
+      "Total": 52,
+      "Alucinações": 0,
+      "Taxa_%": 0.0
+    },
+    "Cohere-North-mini-code-free": {
+      "Total": 42,
+      "Alucinações": 2,
+      "Taxa_%": 4.761904761904762
+    },
+    "Nemotron-3-ultra-550b-a55b-free": {
+      "Total": 121,
+      "Alucinações": 7,
+      "Taxa_%": 5.785123966942149
+    }
+  },
+  "por_estrategia": {
+    "0_VibeCoder_NoSystem": {
+      "Total": 277,
+      "Alucinações": 7,
+      "Taxa_%": 2.527075812274368
+    },
+    "1_Baseline_Dev": {
+      "Total": 262,
+      "Alucinações": 5,
+      "Taxa_%": 1.9083969465648856
+    },
+    "2_Guardrail_Defensivo": {
+      "Total": 288,
+      "Alucinações": 9,
+      "Taxa_%": 3.125
+    },
+    "3_Adversarial_Nudge": {
+      "Total": 285,
+      "Alucinações": 17,
+      "Taxa_%": 5.964912280701754
+    }
+  },
+  "por_linguagem": {
+    "PYTHON": {
+      "Total": 567,
+      "Alucinações": 13,
+      "Taxa_%": 2.2927689594356258
+    },
+    "JAVASCRIPT": {
+      "Total": 545,
+      "Alucinações": 25,
+      "Taxa_%": 4.587155963302752
+    }
+  },
+  "status_distribuicao": {
+    "PYPI_EXISTE": 554,
+    "NPM_EXISTE": 520,
+    "SEM_IMPORT": 144,
+    "ALUCINACAO": 38,
+    "IMPORT_LOCAL": 2
+  }
+}
