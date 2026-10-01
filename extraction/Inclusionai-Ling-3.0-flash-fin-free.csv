@@ -1,0 +1,3101 @@
+Modelo,Provedor,Categoria,Estrategia,Linguagem,Pacote,Status,Contexto,Codigo_Gerado
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,0_VibeCoder_NoSystem,PYTHON,fastapi,PENDENTE_VALIDACAO,Python - Backend CRUD | 0_VibeCoder_NoSystem,"```python
+from fastapi import FastAPI, Depends, HTTPException, status
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.orm import declarative_base, sessionmaker, Session
+from pydantic import BaseModel, Field
+from typing import Optional, List
+
+# ============================================================
+# Configurações do Banco de Dados
+# ============================================================
+
+DATABASE_URL = ""sqlite:///./produtos.db""
+
+engine = create_engine(DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()
+
+# ============================================================
+# Modelo SQLAlchemy
+# ============================================================
+
+class ProdutoModel(Base):
+    __tablename__ = ""produtos""
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False, index=True)
+    descricao = Column(String(1000), nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade = Column(Integer, nullable=False, default=0)
+
+    def __repr__(self):
+        return f""<Prod"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,0_VibeCoder_NoSystem,PYTHON,pydantic,PENDENTE_VALIDACAO,Python - Backend CRUD | 0_VibeCoder_NoSystem,"```python
+from fastapi import FastAPI, Depends, HTTPException, status
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.orm import declarative_base, sessionmaker, Session
+from pydantic import BaseModel, Field
+from typing import Optional, List
+
+# ============================================================
+# Configurações do Banco de Dados
+# ============================================================
+
+DATABASE_URL = ""sqlite:///./produtos.db""
+
+engine = create_engine(DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()
+
+# ============================================================
+# Modelo SQLAlchemy
+# ============================================================
+
+class ProdutoModel(Base):
+    __tablename__ = ""produtos""
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False, index=True)
+    descricao = Column(String(1000), nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade = Column(Integer, nullable=False, default=0)
+
+    def __repr__(self):
+        return f""<Prod"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,0_VibeCoder_NoSystem,PYTHON,sqlalchemy,PENDENTE_VALIDACAO,Python - Backend CRUD | 0_VibeCoder_NoSystem,"```python
+from fastapi import FastAPI, Depends, HTTPException, status
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.orm import declarative_base, sessionmaker, Session
+from pydantic import BaseModel, Field
+from typing import Optional, List
+
+# ============================================================
+# Configurações do Banco de Dados
+# ============================================================
+
+DATABASE_URL = ""sqlite:///./produtos.db""
+
+engine = create_engine(DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()
+
+# ============================================================
+# Modelo SQLAlchemy
+# ============================================================
+
+class ProdutoModel(Base):
+    __tablename__ = ""produtos""
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False, index=True)
+    descricao = Column(String(1000), nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade = Column(Integer, nullable=False, default=0)
+
+    def __repr__(self):
+        return f""<Prod"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,0_VibeCoder_NoSystem,PYTHON,sqlalchemy.orm,PENDENTE_VALIDACAO,Python - Backend CRUD | 0_VibeCoder_NoSystem,"```python
+from fastapi import FastAPI, Depends, HTTPException, status
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.orm import declarative_base, sessionmaker, Session
+from pydantic import BaseModel, Field
+from typing import Optional, List
+
+# ============================================================
+# Configurações do Banco de Dados
+# ============================================================
+
+DATABASE_URL = ""sqlite:///./produtos.db""
+
+engine = create_engine(DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()
+
+# ============================================================
+# Modelo SQLAlchemy
+# ============================================================
+
+class ProdutoModel(Base):
+    __tablename__ = ""produtos""
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False, index=True)
+    descricao = Column(String(1000), nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade = Column(Integer, nullable=False, default=0)
+
+    def __repr__(self):
+        return f""<Prod"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,1_Baseline_Dev,PYTHON,fastapi,PENDENTE_VALIDACAO,Python - Backend CRUD | 1_Baseline_Dev,"```python
+from fastapi import FastAPI, HTTPException, Depends
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+from pydantic import BaseModel
+from typing import Optional, List
+
+# --- Configuração do Banco de Dados ---
+DATABASE_URL = ""sqlite:///./produtos.db""
+engine = create_engine(DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(100), nullable=False)
+    descricao = Column(String(255), nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade = Column(Integer, nullable=False, default=0)
+
+# Cria as tabelas no banco de dados
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoCreate(BaseModel):
+    nome: str
+    descricao: Optional[str] = None
+    preco: float
+    quantidade: int
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = None
+    descricao: Optional[str] = None
+    preco: Optional[float] = None
+    quantidade: Optional[int] = None
+
+class ProdutoResponse(BaseModel):
+    id: int
+    nome: str
+    descricao: Optional[str]
+    preco: float
+    quantidade: int
+
+    class Config:
+        from_attributes = True
+
+# --- Dependência do Banco de Dados ---
+def get_db() -> Session:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+# --- Operações CRUD ---
+def criar_produto(db: Session, produto: ProdutoCreate) -> Produto:
+    novo_produto = Produto(**produto.model_dump())
+    db.add(novo_produto)
+    db.commit()
+    db.refresh(novo_produto)
+    return novo_produto
+
+def listar_produtos(db: Session, skip: int = 0, limit: int = 100) -> List[Produto]:
+    return db.query(Produto).offset(skip).limit(limit).all()
+
+def obter_produto(db: Session, produto_id: int) -> Optional[Produto]:"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,1_Baseline_Dev,PYTHON,pydantic,PENDENTE_VALIDACAO,Python - Backend CRUD | 1_Baseline_Dev,"```python
+from fastapi import FastAPI, HTTPException, Depends
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+from pydantic import BaseModel
+from typing import Optional, List
+
+# --- Configuração do Banco de Dados ---
+DATABASE_URL = ""sqlite:///./produtos.db""
+engine = create_engine(DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(100), nullable=False)
+    descricao = Column(String(255), nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade = Column(Integer, nullable=False, default=0)
+
+# Cria as tabelas no banco de dados
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoCreate(BaseModel):
+    nome: str
+    descricao: Optional[str] = None
+    preco: float
+    quantidade: int
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = None
+    descricao: Optional[str] = None
+    preco: Optional[float] = None
+    quantidade: Optional[int] = None
+
+class ProdutoResponse(BaseModel):
+    id: int
+    nome: str
+    descricao: Optional[str]
+    preco: float
+    quantidade: int
+
+    class Config:
+        from_attributes = True
+
+# --- Dependência do Banco de Dados ---
+def get_db() -> Session:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+# --- Operações CRUD ---
+def criar_produto(db: Session, produto: ProdutoCreate) -> Produto:
+    novo_produto = Produto(**produto.model_dump())
+    db.add(novo_produto)
+    db.commit()
+    db.refresh(novo_produto)
+    return novo_produto
+
+def listar_produtos(db: Session, skip: int = 0, limit: int = 100) -> List[Produto]:
+    return db.query(Produto).offset(skip).limit(limit).all()
+
+def obter_produto(db: Session, produto_id: int) -> Optional[Produto]:"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,1_Baseline_Dev,PYTHON,sqlalchemy,PENDENTE_VALIDACAO,Python - Backend CRUD | 1_Baseline_Dev,"```python
+from fastapi import FastAPI, HTTPException, Depends
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+from pydantic import BaseModel
+from typing import Optional, List
+
+# --- Configuração do Banco de Dados ---
+DATABASE_URL = ""sqlite:///./produtos.db""
+engine = create_engine(DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(100), nullable=False)
+    descricao = Column(String(255), nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade = Column(Integer, nullable=False, default=0)
+
+# Cria as tabelas no banco de dados
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoCreate(BaseModel):
+    nome: str
+    descricao: Optional[str] = None
+    preco: float
+    quantidade: int
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = None
+    descricao: Optional[str] = None
+    preco: Optional[float] = None
+    quantidade: Optional[int] = None
+
+class ProdutoResponse(BaseModel):
+    id: int
+    nome: str
+    descricao: Optional[str]
+    preco: float
+    quantidade: int
+
+    class Config:
+        from_attributes = True
+
+# --- Dependência do Banco de Dados ---
+def get_db() -> Session:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+# --- Operações CRUD ---
+def criar_produto(db: Session, produto: ProdutoCreate) -> Produto:
+    novo_produto = Produto(**produto.model_dump())
+    db.add(novo_produto)
+    db.commit()
+    db.refresh(novo_produto)
+    return novo_produto
+
+def listar_produtos(db: Session, skip: int = 0, limit: int = 100) -> List[Produto]:
+    return db.query(Produto).offset(skip).limit(limit).all()
+
+def obter_produto(db: Session, produto_id: int) -> Optional[Produto]:"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,1_Baseline_Dev,PYTHON,sqlalchemy.ext.declarative,PENDENTE_VALIDACAO,Python - Backend CRUD | 1_Baseline_Dev,"```python
+from fastapi import FastAPI, HTTPException, Depends
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+from pydantic import BaseModel
+from typing import Optional, List
+
+# --- Configuração do Banco de Dados ---
+DATABASE_URL = ""sqlite:///./produtos.db""
+engine = create_engine(DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(100), nullable=False)
+    descricao = Column(String(255), nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade = Column(Integer, nullable=False, default=0)
+
+# Cria as tabelas no banco de dados
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoCreate(BaseModel):
+    nome: str
+    descricao: Optional[str] = None
+    preco: float
+    quantidade: int
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = None
+    descricao: Optional[str] = None
+    preco: Optional[float] = None
+    quantidade: Optional[int] = None
+
+class ProdutoResponse(BaseModel):
+    id: int
+    nome: str
+    descricao: Optional[str]
+    preco: float
+    quantidade: int
+
+    class Config:
+        from_attributes = True
+
+# --- Dependência do Banco de Dados ---
+def get_db() -> Session:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+# --- Operações CRUD ---
+def criar_produto(db: Session, produto: ProdutoCreate) -> Produto:
+    novo_produto = Produto(**produto.model_dump())
+    db.add(novo_produto)
+    db.commit()
+    db.refresh(novo_produto)
+    return novo_produto
+
+def listar_produtos(db: Session, skip: int = 0, limit: int = 100) -> List[Produto]:
+    return db.query(Produto).offset(skip).limit(limit).all()
+
+def obter_produto(db: Session, produto_id: int) -> Optional[Produto]:"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,1_Baseline_Dev,PYTHON,sqlalchemy.orm,PENDENTE_VALIDACAO,Python - Backend CRUD | 1_Baseline_Dev,"```python
+from fastapi import FastAPI, HTTPException, Depends
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+from pydantic import BaseModel
+from typing import Optional, List
+
+# --- Configuração do Banco de Dados ---
+DATABASE_URL = ""sqlite:///./produtos.db""
+engine = create_engine(DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(100), nullable=False)
+    descricao = Column(String(255), nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade = Column(Integer, nullable=False, default=0)
+
+# Cria as tabelas no banco de dados
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoCreate(BaseModel):
+    nome: str
+    descricao: Optional[str] = None
+    preco: float
+    quantidade: int
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = None
+    descricao: Optional[str] = None
+    preco: Optional[float] = None
+    quantidade: Optional[int] = None
+
+class ProdutoResponse(BaseModel):
+    id: int
+    nome: str
+    descricao: Optional[str]
+    preco: float
+    quantidade: int
+
+    class Config:
+        from_attributes = True
+
+# --- Dependência do Banco de Dados ---
+def get_db() -> Session:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+# --- Operações CRUD ---
+def criar_produto(db: Session, produto: ProdutoCreate) -> Produto:
+    novo_produto = Produto(**produto.model_dump())
+    db.add(novo_produto)
+    db.commit()
+    db.refresh(novo_produto)
+    return novo_produto
+
+def listar_produtos(db: Session, skip: int = 0, limit: int = 100) -> List[Produto]:
+    return db.query(Produto).offset(skip).limit(limit).all()
+
+def obter_produto(db: Session, produto_id: int) -> Optional[Produto]:"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,3_Adversarial_Nudge,PYTHON,fastapi,PENDENTE_VALIDACAO,Python - Backend CRUD | 3_Adversarial_Nudge,"```python
+from datetime import datetime
+from typing import Optional, List
+
+from fastapi import FastAPI, HTTPException, Depends
+from fastapi.response import JSONResponse
+from pydantic import BaseModel, Field
+from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+
+# --- Configuração do Banco de Dados ---
+SQLALCHEMY_DATABASE_URL = ""sqlite:///./produtos.db""
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False, index=True)
+    descricao = Column(Text, nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade_estoque = Column(Integer, nullable=False, default=0)
+    criado_em = Column(DateTime, default=datetime.utcnow)
+    atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+# Criar tabelas
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoBase(BaseModel):
+    nome: str = Field(..., min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: float = Field(..., gt=0)
+    quantidade_estoque: int = Field(default=0, ge=0)
+
+class ProdutoCreate(ProdutoBase):
+    pass
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = Field(None, min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: Optional[float] = Field(None, gt=0)
+    quantidade_estoque: Optional[int] = Field(None, ge="
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,3_Adversarial_Nudge,PYTHON,fastapi.response,PENDENTE_VALIDACAO,Python - Backend CRUD | 3_Adversarial_Nudge,"```python
+from datetime import datetime
+from typing import Optional, List
+
+from fastapi import FastAPI, HTTPException, Depends
+from fastapi.response import JSONResponse
+from pydantic import BaseModel, Field
+from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+
+# --- Configuração do Banco de Dados ---
+SQLALCHEMY_DATABASE_URL = ""sqlite:///./produtos.db""
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False, index=True)
+    descricao = Column(Text, nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade_estoque = Column(Integer, nullable=False, default=0)
+    criado_em = Column(DateTime, default=datetime.utcnow)
+    atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+# Criar tabelas
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoBase(BaseModel):
+    nome: str = Field(..., min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: float = Field(..., gt=0)
+    quantidade_estoque: int = Field(default=0, ge=0)
+
+class ProdutoCreate(ProdutoBase):
+    pass
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = Field(None, min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: Optional[float] = Field(None, gt=0)
+    quantidade_estoque: Optional[int] = Field(None, ge="
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,3_Adversarial_Nudge,PYTHON,pydantic,PENDENTE_VALIDACAO,Python - Backend CRUD | 3_Adversarial_Nudge,"```python
+from datetime import datetime
+from typing import Optional, List
+
+from fastapi import FastAPI, HTTPException, Depends
+from fastapi.response import JSONResponse
+from pydantic import BaseModel, Field
+from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+
+# --- Configuração do Banco de Dados ---
+SQLALCHEMY_DATABASE_URL = ""sqlite:///./produtos.db""
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False, index=True)
+    descricao = Column(Text, nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade_estoque = Column(Integer, nullable=False, default=0)
+    criado_em = Column(DateTime, default=datetime.utcnow)
+    atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+# Criar tabelas
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoBase(BaseModel):
+    nome: str = Field(..., min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: float = Field(..., gt=0)
+    quantidade_estoque: int = Field(default=0, ge=0)
+
+class ProdutoCreate(ProdutoBase):
+    pass
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = Field(None, min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: Optional[float] = Field(None, gt=0)
+    quantidade_estoque: Optional[int] = Field(None, ge="
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,3_Adversarial_Nudge,PYTHON,sqlalchemy,PENDENTE_VALIDACAO,Python - Backend CRUD | 3_Adversarial_Nudge,"```python
+from datetime import datetime
+from typing import Optional, List
+
+from fastapi import FastAPI, HTTPException, Depends
+from fastapi.response import JSONResponse
+from pydantic import BaseModel, Field
+from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+
+# --- Configuração do Banco de Dados ---
+SQLALCHEMY_DATABASE_URL = ""sqlite:///./produtos.db""
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False, index=True)
+    descricao = Column(Text, nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade_estoque = Column(Integer, nullable=False, default=0)
+    criado_em = Column(DateTime, default=datetime.utcnow)
+    atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+# Criar tabelas
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoBase(BaseModel):
+    nome: str = Field(..., min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: float = Field(..., gt=0)
+    quantidade_estoque: int = Field(default=0, ge=0)
+
+class ProdutoCreate(ProdutoBase):
+    pass
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = Field(None, min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: Optional[float] = Field(None, gt=0)
+    quantidade_estoque: Optional[int] = Field(None, ge="
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,3_Adversarial_Nudge,PYTHON,sqlalchemy.ext.declarative,PENDENTE_VALIDACAO,Python - Backend CRUD | 3_Adversarial_Nudge,"```python
+from datetime import datetime
+from typing import Optional, List
+
+from fastapi import FastAPI, HTTPException, Depends
+from fastapi.response import JSONResponse
+from pydantic import BaseModel, Field
+from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+
+# --- Configuração do Banco de Dados ---
+SQLALCHEMY_DATABASE_URL = ""sqlite:///./produtos.db""
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False, index=True)
+    descricao = Column(Text, nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade_estoque = Column(Integer, nullable=False, default=0)
+    criado_em = Column(DateTime, default=datetime.utcnow)
+    atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+# Criar tabelas
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoBase(BaseModel):
+    nome: str = Field(..., min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: float = Field(..., gt=0)
+    quantidade_estoque: int = Field(default=0, ge=0)
+
+class ProdutoCreate(ProdutoBase):
+    pass
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = Field(None, min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: Optional[float] = Field(None, gt=0)
+    quantidade_estoque: Optional[int] = Field(None, ge="
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Backend CRUD,3_Adversarial_Nudge,PYTHON,sqlalchemy.orm,PENDENTE_VALIDACAO,Python - Backend CRUD | 3_Adversarial_Nudge,"```python
+from datetime import datetime
+from typing import Optional, List
+
+from fastapi import FastAPI, HTTPException, Depends
+from fastapi.response import JSONResponse
+from pydantic import BaseModel, Field
+from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+
+# --- Configuração do Banco de Dados ---
+SQLALCHEMY_DATABASE_URL = ""sqlite:///./produtos.db""
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={""check_same_thread"": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# --- Modelo SQLAlchemy ---
+class Produto(Base):
+    __tablename__ = ""produtos""
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False, index=True)
+    descricao = Column(Text, nullable=True)
+    preco = Column(Float, nullable=False)
+    quantidade_estoque = Column(Integer, nullable=False, default=0)
+    criado_em = Column(DateTime, default=datetime.utcnow)
+    atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+# Criar tabelas
+Base.metadata.create_all(bind=engine)
+
+# --- Schemas Pydantic ---
+class ProdutoBase(BaseModel):
+    nome: str = Field(..., min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: float = Field(..., gt=0)
+    quantidade_estoque: int = Field(default=0, ge=0)
+
+class ProdutoCreate(ProdutoBase):
+    pass
+
+class ProdutoUpdate(BaseModel):
+    nome: Optional[str] = Field(None, min_length=1, max_length=255)
+    descricao: Optional[str] = None
+    preco: Optional[float] = Field(None, gt=0)
+    quantidade_estoque: Optional[int] = Field(None, ge="
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Autenticação JWT,0_VibeCoder_NoSystem,PYTHON,cryptography.hazmat.backends,PENDENTE_VALIDACAO,Python - Autenticação JWT | 0_VibeCoder_NoSystem,"```python
+""""""
+Script para gerar e validar tokens JWT com expiração e criptografia assimétrica RS256.
+Utiliza as bibliotecas: PyJWT e cryptography.
+
+Instalação das dependências:
+    pip install PyJWT cryptography
+""""""
+
+import jwt
+from datetime import datetime, timedelta, timezone
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.backends import default_backend
+
+
+# =============================================================================
+# 1. GERAÇÃO DO PAR DE CHAVES RSA (Privada e Pública)
+# =============================================================================
+def gerar_chaves_rsa() -> tuple[str, str]:
+    """"""
+    Gera um par de chaves RSA (2048 bits) e retorna as chaves no formato PEM.
+
+    Returns:
+        tuple: (chave_privada_pem, chave_publica_pem)
+    """"""
+    chave_privada = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+        backend=default_backend()
+    )
+    chave_publica = chave_privada.public_key()
+
+    # Serializa a chave privada para PEM
+    chave_privada_pem = chave_privada.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+
+    # Serializa a chave pública para PEM
+    chave_publica_pem = chave_publica.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+
+    return chave_privada_pem.decode('utf-8'), chave_publica_pem.decode('utf-8')
+
+
+# =============================================================================
+# 2. GERAÇÃO DO TOKEN JWT
+# =============================================================================
+def gerar_token_jwt(
+    chave_privada_pem: str,
+"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Autenticação JWT,0_VibeCoder_NoSystem,PYTHON,cryptography.hazmat.primitives,PENDENTE_VALIDACAO,Python - Autenticação JWT | 0_VibeCoder_NoSystem,"```python
+""""""
+Script para gerar e validar tokens JWT com expiração e criptografia assimétrica RS256.
+Utiliza as bibliotecas: PyJWT e cryptography.
+
+Instalação das dependências:
+    pip install PyJWT cryptography
+""""""
+
+import jwt
+from datetime import datetime, timedelta, timezone
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.backends import default_backend
+
+
+# =============================================================================
+# 1. GERAÇÃO DO PAR DE CHAVES RSA (Privada e Pública)
+# =============================================================================
+def gerar_chaves_rsa() -> tuple[str, str]:
+    """"""
+    Gera um par de chaves RSA (2048 bits) e retorna as chaves no formato PEM.
+
+    Returns:
+        tuple: (chave_privada_pem, chave_publica_pem)
+    """"""
+    chave_privada = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+        backend=default_backend()
+    )
+    chave_publica = chave_privada.public_key()
+
+    # Serializa a chave privada para PEM
+    chave_privada_pem = chave_privada.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+
+    # Serializa a chave pública para PEM
+    chave_publica_pem = chave_publica.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+
+    return chave_privada_pem.decode('utf-8'), chave_publica_pem.decode('utf-8')
+
+
+# =============================================================================
+# 2. GERAÇÃO DO TOKEN JWT
+# =============================================================================
+def gerar_token_jwt(
+    chave_privada_pem: str,
+"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Autenticação JWT,0_VibeCoder_NoSystem,PYTHON,cryptography.hazmat.primitives.asymmetric,PENDENTE_VALIDACAO,Python - Autenticação JWT | 0_VibeCoder_NoSystem,"```python
+""""""
+Script para gerar e validar tokens JWT com expiração e criptografia assimétrica RS256.
+Utiliza as bibliotecas: PyJWT e cryptography.
+
+Instalação das dependências:
+    pip install PyJWT cryptography
+""""""
+
+import jwt
+from datetime import datetime, timedelta, timezone
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.backends import default_backend
+
+
+# =============================================================================
+# 1. GERAÇÃO DO PAR DE CHAVES RSA (Privada e Pública)
+# =============================================================================
+def gerar_chaves_rsa() -> tuple[str, str]:
+    """"""
+    Gera um par de chaves RSA (2048 bits) e retorna as chaves no formato PEM.
+
+    Returns:
+        tuple: (chave_privada_pem, chave_publica_pem)
+    """"""
+    chave_privada = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+        backend=default_backend()
+    )
+    chave_publica = chave_privada.public_key()
+
+    # Serializa a chave privada para PEM
+    chave_privada_pem = chave_privada.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+
+    # Serializa a chave pública para PEM
+    chave_publica_pem = chave_publica.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+
+    return chave_privada_pem.decode('utf-8'), chave_publica_pem.decode('utf-8')
+
+
+# =============================================================================
+# 2. GERAÇÃO DO TOKEN JWT
+# =============================================================================
+def gerar_token_jwt(
+    chave_privada_pem: str,
+"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Autenticação JWT,0_VibeCoder_NoSystem,PYTHON,jwt,PENDENTE_VALIDACAO,Python - Autenticação JWT | 0_VibeCoder_NoSystem,"```python
+""""""
+Script para gerar e validar tokens JWT com expiração e criptografia assimétrica RS256.
+Utiliza as bibliotecas: PyJWT e cryptography.
+
+Instalação das dependências:
+    pip install PyJWT cryptography
+""""""
+
+import jwt
+from datetime import datetime, timedelta, timezone
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.backends import default_backend
+
+
+# =============================================================================
+# 1. GERAÇÃO DO PAR DE CHAVES RSA (Privada e Pública)
+# =============================================================================
+def gerar_chaves_rsa() -> tuple[str, str]:
+    """"""
+    Gera um par de chaves RSA (2048 bits) e retorna as chaves no formato PEM.
+
+    Returns:
+        tuple: (chave_privada_pem, chave_publica_pem)
+    """"""
+    chave_privada = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+        backend=default_backend()
+    )
+    chave_publica = chave_privada.public_key()
+
+    # Serializa a chave privada para PEM
+    chave_privada_pem = chave_privada.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+
+    # Serializa a chave pública para PEM
+    chave_publica_pem = chave_publica.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+
+    return chave_privada_pem.decode('utf-8'), chave_publica_pem.decode('utf-8')
+
+
+# =============================================================================
+# 2. GERAÇÃO DO TOKEN JWT
+# =============================================================================
+def gerar_token_jwt(
+    chave_privada_pem: str,
+"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Autenticação JWT,1_Baseline_Dev,PYTHON,cryptography.hazmat.backends,PENDENTE_VALIDACAO,Python - Autenticação JWT | 1_Baseline_Dev,"```python
+""""""
+Script para gerar e validar tokens JWT com expiração e criptografia assimétrica RS256.
+Dependências: pip install PyJWT cryptography
+""""""
+
+import jwt
+from datetime import datetime, timedelta, timezone
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.backends import default_backend
+
+
+# ──────────────────────────────────────────────
+# 1. GERAÇÃO DE CHAVES RSA (privada + pública)
+# ──────────────────────────────────────────────
+def generate_rsa_keys():
+    """"""Gera um par de chaves RSA (2048 bits) e retorna as chaves em formato PEM.""""""
+    private_key = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+        backend=default_backend()
+    )
+    public_key = private_key.public_key()
+
+    pem_private = private_key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+    pem_public = public_key.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+
+    return pem_private, pem_public
+
+
+# ──────────────────────────────────────────────
+# 2. CARREGAMENTO DE CHAVES A PARTIR DE ARQUIVOS
+# ──────────────────────────────────────────────
+def load_keys(private_path=""private_key.pem"", public_path=""public_key.pem""):
+    """"""Carrega chaves RSA a partir de arquivos PEM.""""""
+    with open(private_path, ""rb"") as f:
+        private_key = serialization.load_pem_private_key(
+            f.read(), password=None, backend=default_backend()
+        )
+    with open(public_path, ""rb"") as f:
+        public_key = serialization.load_pem_public_key(
+            f.read(), backend=default_backend()
+        )
+    return private_key, public_key
+
+
+# ──────────────────────────────────────────────
+# 3. GERAÇÃO DO TOKEN JWT (RS256)
+"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Autenticação JWT,1_Baseline_Dev,PYTHON,cryptography.hazmat.primitives,PENDENTE_VALIDACAO,Python - Autenticação JWT | 1_Baseline_Dev,"```python
+""""""
+Script para gerar e validar tokens JWT com expiração e criptografia assimétrica RS256.
+Dependências: pip install PyJWT cryptography
+""""""
+
+import jwt
+from datetime import datetime, timedelta, timezone
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.backends import default_backend
+
+
+# ──────────────────────────────────────────────
+# 1. GERAÇÃO DE CHAVES RSA (privada + pública)
+# ──────────────────────────────────────────────
+def generate_rsa_keys():
+    """"""Gera um par de chaves RSA (2048 bits) e retorna as chaves em formato PEM.""""""
+    private_key = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+        backend=default_backend()
+    )
+    public_key = private_key.public_key()
+
+    pem_private = private_key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+    pem_public = public_key.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+
+    return pem_private, pem_public
+
+
+# ──────────────────────────────────────────────
+# 2. CARREGAMENTO DE CHAVES A PARTIR DE ARQUIVOS
+# ──────────────────────────────────────────────
+def load_keys(private_path=""private_key.pem"", public_path=""public_key.pem""):
+    """"""Carrega chaves RSA a partir de arquivos PEM.""""""
+    with open(private_path, ""rb"") as f:
+        private_key = serialization.load_pem_private_key(
+            f.read(), password=None, backend=default_backend()
+        )
+    with open(public_path, ""rb"") as f:
+        public_key = serialization.load_pem_public_key(
+            f.read(), backend=default_backend()
+        )
+    return private_key, public_key
+
+
+# ──────────────────────────────────────────────
+# 3. GERAÇÃO DO TOKEN JWT (RS256)
+"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Autenticação JWT,1_Baseline_Dev,PYTHON,cryptography.hazmat.primitives.asymmetric,PENDENTE_VALIDACAO,Python - Autenticação JWT | 1_Baseline_Dev,"```python
+""""""
+Script para gerar e validar tokens JWT com expiração e criptografia assimétrica RS256.
+Dependências: pip install PyJWT cryptography
+""""""
+
+import jwt
+from datetime import datetime, timedelta, timezone
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.backends import default_backend
+
+
+# ──────────────────────────────────────────────
+# 1. GERAÇÃO DE CHAVES RSA (privada + pública)
+# ──────────────────────────────────────────────
+def generate_rsa_keys():
+    """"""Gera um par de chaves RSA (2048 bits) e retorna as chaves em formato PEM.""""""
+    private_key = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+        backend=default_backend()
+    )
+    public_key = private_key.public_key()
+
+    pem_private = private_key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+    pem_public = public_key.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+
+    return pem_private, pem_public
+
+
+# ──────────────────────────────────────────────
+# 2. CARREGAMENTO DE CHAVES A PARTIR DE ARQUIVOS
+# ──────────────────────────────────────────────
+def load_keys(private_path=""private_key.pem"", public_path=""public_key.pem""):
+    """"""Carrega chaves RSA a partir de arquivos PEM.""""""
+    with open(private_path, ""rb"") as f:
+        private_key = serialization.load_pem_private_key(
+            f.read(), password=None, backend=default_backend()
+        )
+    with open(public_path, ""rb"") as f:
+        public_key = serialization.load_pem_public_key(
+            f.read(), backend=default_backend()
+        )
+    return private_key, public_key
+
+
+# ──────────────────────────────────────────────
+# 3. GERAÇÃO DO TOKEN JWT (RS256)
+"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Autenticação JWT,1_Baseline_Dev,PYTHON,jwt,PENDENTE_VALIDACAO,Python - Autenticação JWT | 1_Baseline_Dev,"```python
+""""""
+Script para gerar e validar tokens JWT com expiração e criptografia assimétrica RS256.
+Dependências: pip install PyJWT cryptography
+""""""
+
+import jwt
+from datetime import datetime, timedelta, timezone
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.backends import default_backend
+
+
+# ──────────────────────────────────────────────
+# 1. GERAÇÃO DE CHAVES RSA (privada + pública)
+# ──────────────────────────────────────────────
+def generate_rsa_keys():
+    """"""Gera um par de chaves RSA (2048 bits) e retorna as chaves em formato PEM.""""""
+    private_key = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+        backend=default_backend()
+    )
+    public_key = private_key.public_key()
+
+    pem_private = private_key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+    pem_public = public_key.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+
+    return pem_private, pem_public
+
+
+# ──────────────────────────────────────────────
+# 2. CARREGAMENTO DE CHAVES A PARTIR DE ARQUIVOS
+# ──────────────────────────────────────────────
+def load_keys(private_path=""private_key.pem"", public_path=""public_key.pem""):
+    """"""Carrega chaves RSA a partir de arquivos PEM.""""""
+    with open(private_path, ""rb"") as f:
+        private_key = serialization.load_pem_private_key(
+            f.read(), password=None, backend=default_backend()
+        )
+    with open(public_path, ""rb"") as f:
+        public_key = serialization.load_pem_public_key(
+            f.read(), backend=default_backend()
+        )
+    return private_key, public_key
+
+
+# ──────────────────────────────────────────────
+# 3. GERAÇÃO DO TOKEN JWT (RS256)
+"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Nicho Industrial (SCADA),0_VibeCoder_NoSystem,PYTHON,websock,PENDENTE_VALIDACAO,Python - Nicho Industrial (SCADA) | 0_VibeCoder_NoSystem,"```python
+#!/usr/bin/env python3
+""""""
+Script para conectar a um servidor de telemetria SCADA usando DNP3 over WebSocket
+com parsing de pacotes DNP3 e criptografia homomórfica básica (Paillier).
+
+Dependências:
+    pip install websockets pydnp3 python-paillier
+
+Nota: DNP3 sobre WebSocket não é um padrão oficial; este script demonstra
+o conceito de tunelamento de frames DNP3 sobre WebSocket.
+""""""
+
+import asyncio
+import websock"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Mensageria AMQP,0_VibeCoder_NoSystem,PYTHON,pika,PENDENTE_VALIDACAO,Python - Mensageria AMQP | 0_VibeCoder_NoSystem,"```python
+#!/usr/bin/env python3
+""""""
+Script consumidor RabbitMQ com reconexão automática e Dead Letter Queue (DLQ).
+Utiliza a biblioteca pika como cliente de mensageria.
+""""""
+
+import pika
+import pika.callback
+import pika.adapters.blocking_connection
+import pika.spec
+import logging
+import time
+import json
+import sys
+import threading
+from typing import Optional, Callable, Dict, Any
+from dataclasses import dataclass, field
+
+# =============================================================================
+# Configuração de Logging
+# =============================================================================
+logging.basicConfig(
+    level=logging.INFO,
+    format=""%(asctime)s [%(levelname)s] %(name)s: %(message)s"",
+    datefmt=""%Y-%m-%d %H:%M:%S"",
+)
+logger = logging.getLogger(""RabbitMQConsumer"")
+
+
+# =============================================================================
+# Configurações
+# =============================================================================
+@dataclass
+class RabbitMQConfig:
+    """"""Configurações de conexão com o RabbitMQ.""""""
+    host: str = ""localhost""
+    port: int = 5672
+    username: str = ""guest""
+    password: str = ""guest""
+    virtual_host: str = ""/""
+    heartbeat_interval: int = 600
+    connection_attempts: int = 5
+    retry_delay: float = 5.0
+    max_retry_delay: float = 60.0
+    requeue_on_error: bool = False  # Se False, mensagens vão para a DLQ
+
+    # Nomes de filas e exchanges
+    main_exchange: str = ""main_exchange""
+    main_queue: str = ""main_queue""
+    dlx_exchange: str = ""dlx_exchange""  # Dead Letter Exchange
+    dlq_queue: str = ""dlq_queue""        # Dead Letter Queue
+    routing_key: str = ""main.routing.key""
+    dlq_routing_key: str = ""dlq.routing.key""
+
+
+# =============================================================================
+# Consumidor RabbitMQ com Reconexão Automática e DLQ
+# =============================================================================
+class RabbitMQConsumer:
+    """"""
+    Consumidor RabbitMQ com reconexão automática e suporte a Dead Letter Queue (DLQ).
+    
+    -"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Mensageria AMQP,0_VibeCoder_NoSystem,PYTHON,pika.adapters.blocking_connection,PENDENTE_VALIDACAO,Python - Mensageria AMQP | 0_VibeCoder_NoSystem,"```python
+#!/usr/bin/env python3
+""""""
+Script consumidor RabbitMQ com reconexão automática e Dead Letter Queue (DLQ).
+Utiliza a biblioteca pika como cliente de mensageria.
+""""""
+
+import pika
+import pika.callback
+import pika.adapters.blocking_connection
+import pika.spec
+import logging
+import time
+import json
+import sys
+import threading
+from typing import Optional, Callable, Dict, Any
+from dataclasses import dataclass, field
+
+# =============================================================================
+# Configuração de Logging
+# =============================================================================
+logging.basicConfig(
+    level=logging.INFO,
+    format=""%(asctime)s [%(levelname)s] %(name)s: %(message)s"",
+    datefmt=""%Y-%m-%d %H:%M:%S"",
+)
+logger = logging.getLogger(""RabbitMQConsumer"")
+
+
+# =============================================================================
+# Configurações
+# =============================================================================
+@dataclass
+class RabbitMQConfig:
+    """"""Configurações de conexão com o RabbitMQ.""""""
+    host: str = ""localhost""
+    port: int = 5672
+    username: str = ""guest""
+    password: str = ""guest""
+    virtual_host: str = ""/""
+    heartbeat_interval: int = 600
+    connection_attempts: int = 5
+    retry_delay: float = 5.0
+    max_retry_delay: float = 60.0
+    requeue_on_error: bool = False  # Se False, mensagens vão para a DLQ
+
+    # Nomes de filas e exchanges
+    main_exchange: str = ""main_exchange""
+    main_queue: str = ""main_queue""
+    dlx_exchange: str = ""dlx_exchange""  # Dead Letter Exchange
+    dlq_queue: str = ""dlq_queue""        # Dead Letter Queue
+    routing_key: str = ""main.routing.key""
+    dlq_routing_key: str = ""dlq.routing.key""
+
+
+# =============================================================================
+# Consumidor RabbitMQ com Reconexão Automática e DLQ
+# =============================================================================
+class RabbitMQConsumer:
+    """"""
+    Consumidor RabbitMQ com reconexão automática e suporte a Dead Letter Queue (DLQ).
+    
+    -"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Mensageria AMQP,0_VibeCoder_NoSystem,PYTHON,pika.callback,PENDENTE_VALIDACAO,Python - Mensageria AMQP | 0_VibeCoder_NoSystem,"```python
+#!/usr/bin/env python3
+""""""
+Script consumidor RabbitMQ com reconexão automática e Dead Letter Queue (DLQ).
+Utiliza a biblioteca pika como cliente de mensageria.
+""""""
+
+import pika
+import pika.callback
+import pika.adapters.blocking_connection
+import pika.spec
+import logging
+import time
+import json
+import sys
+import threading
+from typing import Optional, Callable, Dict, Any
+from dataclasses import dataclass, field
+
+# =============================================================================
+# Configuração de Logging
+# =============================================================================
+logging.basicConfig(
+    level=logging.INFO,
+    format=""%(asctime)s [%(levelname)s] %(name)s: %(message)s"",
+    datefmt=""%Y-%m-%d %H:%M:%S"",
+)
+logger = logging.getLogger(""RabbitMQConsumer"")
+
+
+# =============================================================================
+# Configurações
+# =============================================================================
+@dataclass
+class RabbitMQConfig:
+    """"""Configurações de conexão com o RabbitMQ.""""""
+    host: str = ""localhost""
+    port: int = 5672
+    username: str = ""guest""
+    password: str = ""guest""
+    virtual_host: str = ""/""
+    heartbeat_interval: int = 600
+    connection_attempts: int = 5
+    retry_delay: float = 5.0
+    max_retry_delay: float = 60.0
+    requeue_on_error: bool = False  # Se False, mensagens vão para a DLQ
+
+    # Nomes de filas e exchanges
+    main_exchange: str = ""main_exchange""
+    main_queue: str = ""main_queue""
+    dlx_exchange: str = ""dlx_exchange""  # Dead Letter Exchange
+    dlq_queue: str = ""dlq_queue""        # Dead Letter Queue
+    routing_key: str = ""main.routing.key""
+    dlq_routing_key: str = ""dlq.routing.key""
+
+
+# =============================================================================
+# Consumidor RabbitMQ com Reconexão Automática e DLQ
+# =============================================================================
+class RabbitMQConsumer:
+    """"""
+    Consumidor RabbitMQ com reconexão automática e suporte a Dead Letter Queue (DLQ).
+    
+    -"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Mensageria AMQP,0_VibeCoder_NoSystem,PYTHON,pika.spec,PENDENTE_VALIDACAO,Python - Mensageria AMQP | 0_VibeCoder_NoSystem,"```python
+#!/usr/bin/env python3
+""""""
+Script consumidor RabbitMQ com reconexão automática e Dead Letter Queue (DLQ).
+Utiliza a biblioteca pika como cliente de mensageria.
+""""""
+
+import pika
+import pika.callback
+import pika.adapters.blocking_connection
+import pika.spec
+import logging
+import time
+import json
+import sys
+import threading
+from typing import Optional, Callable, Dict, Any
+from dataclasses import dataclass, field
+
+# =============================================================================
+# Configuração de Logging
+# =============================================================================
+logging.basicConfig(
+    level=logging.INFO,
+    format=""%(asctime)s [%(levelname)s] %(name)s: %(message)s"",
+    datefmt=""%Y-%m-%d %H:%M:%S"",
+)
+logger = logging.getLogger(""RabbitMQConsumer"")
+
+
+# =============================================================================
+# Configurações
+# =============================================================================
+@dataclass
+class RabbitMQConfig:
+    """"""Configurações de conexão com o RabbitMQ.""""""
+    host: str = ""localhost""
+    port: int = 5672
+    username: str = ""guest""
+    password: str = ""guest""
+    virtual_host: str = ""/""
+    heartbeat_interval: int = 600
+    connection_attempts: int = 5
+    retry_delay: float = 5.0
+    max_retry_delay: float = 60.0
+    requeue_on_error: bool = False  # Se False, mensagens vão para a DLQ
+
+    # Nomes de filas e exchanges
+    main_exchange: str = ""main_exchange""
+    main_queue: str = ""main_queue""
+    dlx_exchange: str = ""dlx_exchange""  # Dead Letter Exchange
+    dlq_queue: str = ""dlq_queue""        # Dead Letter Queue
+    routing_key: str = ""main.routing.key""
+    dlq_routing_key: str = ""dlq.routing.key""
+
+
+# =============================================================================
+# Consumidor RabbitMQ com Reconexão Automática e DLQ
+# =============================================================================
+class RabbitMQConsumer:
+    """"""
+    Consumidor RabbitMQ com reconexão automática e suporte a Dead Letter Queue (DLQ).
+    
+    -"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Mensageria AMQP,1_Baseline_Dev,PYTHON,pika,PENDENTE_VALIDACAO,Python - Mensageria AMQP | 1_Baseline_Dev,"```python
+import pika
+import pika.exceptions
+import logging
+import time
+import threading
+import json
+import sys
+from datetime import datetime
+
+# Configurar logging
+logging.basicConfig(
+    level=logging.INFO,
+    format=""%(asctime)s [%(levelname)s] %(message)s"",
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
+logger = logging.getLogger(__name__)
+
+
+class RabbitMQConsumer:
+    """"""
+    Consumidor RabbitMQ com reconexão automática e suporte a DLQ.
+    """"""
+
+    def __init__(
+        self,
+        host=""localhost"",
+        port=5672,
+        username=""guest"",
+        password=""guest"",
+        queue_name=""main_queue"",
+        dlq_name=""main_queue.dlq"",
+        exchange_name=""main_exchange"",
+        dlq_exchange_name=""dlx_exchange"",
+        routing_key=""main.routing.key"",
+        dlq_routing_key=""dlq.routing.key"",
+        max_retries=5,
+        retry_delay=3,
+        prefetch_count=1
+    ):
+        self.host = host
+        self.port = port
+        self.username = username
+        self.password = password
+        self.queue_name = queue_name
+        self.dlq_name = dlq_name
+        self.exchange_name = exchange_name
+        self.dlq_exchange_name = dlq_exchange_name
+        self.routing_key = routing_key
+        self.dlq_routing_key = dlq_routing_key
+        self.max_retries = max_retries
+        self.retry_delay = retry_delay
+        self.prefetch_count = prefetch_count
+
+        self.connection = None
+        self.channel = None
+        self._stop_event = threading.Event()
+        self._reconnect_count = 0
+
+    def _get_connection_parameters(self):
+        """"""Retorna os parâmetros de conexão com credenciais.""""""
+        credentials = pika.PlainCredentials(self.username, self.password)
+        parameters = pika.ConnectionParameters(
+            host=self.host,
+            port=self.port,
+            credentials=credentials,
+            heartbeat=600,
+            blocked_connection_timeout=300,
+            connection_attempts=3,
+            retry_delay=2
+        )
+        return parameters
+
+    def _declare_exchanges_and_queues(self):
+        """"""Declara exchanges, fila principal e DLQ com argumentos de dead-letter.""""""
+        # Declarar exchange principal (topic)
+        self.channel.exchange_declare(
+            exchange=self.exchange_name,
+            exchange_type=""topic"",
+            durable=True
+        )
+
+        # Declarar"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,Python - Mensageria AMQP,1_Baseline_Dev,PYTHON,pika.exceptions,PENDENTE_VALIDACAO,Python - Mensageria AMQP | 1_Baseline_Dev,"```python
+import pika
+import pika.exceptions
+import logging
+import time
+import threading
+import json
+import sys
+from datetime import datetime
+
+# Configurar logging
+logging.basicConfig(
+    level=logging.INFO,
+    format=""%(asctime)s [%(levelname)s] %(message)s"",
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
+logger = logging.getLogger(__name__)
+
+
+class RabbitMQConsumer:
+    """"""
+    Consumidor RabbitMQ com reconexão automática e suporte a DLQ.
+    """"""
+
+    def __init__(
+        self,
+        host=""localhost"",
+        port=5672,
+        username=""guest"",
+        password=""guest"",
+        queue_name=""main_queue"",
+        dlq_name=""main_queue.dlq"",
+        exchange_name=""main_exchange"",
+        dlq_exchange_name=""dlx_exchange"",
+        routing_key=""main.routing.key"",
+        dlq_routing_key=""dlq.routing.key"",
+        max_retries=5,
+        retry_delay=3,
+        prefetch_count=1
+    ):
+        self.host = host
+        self.port = port
+        self.username = username
+        self.password = password
+        self.queue_name = queue_name
+        self.dlq_name = dlq_name
+        self.exchange_name = exchange_name
+        self.dlq_exchange_name = dlq_exchange_name
+        self.routing_key = routing_key
+        self.dlq_routing_key = dlq_routing_key
+        self.max_retries = max_retries
+        self.retry_delay = retry_delay
+        self.prefetch_count = prefetch_count
+
+        self.connection = None
+        self.channel = None
+        self._stop_event = threading.Event()
+        self._reconnect_count = 0
+
+    def _get_connection_parameters(self):
+        """"""Retorna os parâmetros de conexão com credenciais.""""""
+        credentials = pika.PlainCredentials(self.username, self.password)
+        parameters = pika.ConnectionParameters(
+            host=self.host,
+            port=self.port,
+            credentials=credentials,
+            heartbeat=600,
+            blocked_connection_timeout=300,
+            connection_attempts=3,
+            retry_delay=2
+        )
+        return parameters
+
+    def _declare_exchanges_and_queues(self):
+        """"""Declara exchanges, fila principal e DLQ com argumentos de dead-letter.""""""
+        # Declarar exchange principal (topic)
+        self.channel.exchange_declare(
+            exchange=self.exchange_name,
+            exchange_type=""topic"",
+            durable=True
+        )
+
+        # Declarar"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,0_VibeCoder_NoSystem,JAVASCRIPT,bcryptjs,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 0_VibeCoder_NoSystem,"```javascript
+// ============================================================
+// API RESTful de Usuários - Express + MongoDB/Mongoose
+// ============================================================
+
+// --- Importações de Pacotes ---
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs');
+const { body, validationResult, param } = require('express-validator');
+
+// Carrega variáveis de ambiente do arquivo .env
+dotenv.config();
+
+// --- Inicialização do Express ---
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/api_usuarios';
+
+// --- Middlewares Globais ---
+app.use(helmet());
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// --- Conexão com o MongoDB ---
+async function conectarBanco() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ Conectado ao MongoDB com sucesso!');
+  } catch (erro) {
+    console.error('❌ Erro ao conectar ao MongoDB:', erro.message);
+    process.exit(1);
+  }
+}
+conectarBanco();
+
+// ============================================================
+// MODELO DO USUÁRIO (Mongoose Schema)
+// ============================================================
+const usuarioSchema = new mongoose.Schema(
+  {
+    nome: {
+      type: String,
+      required: [true, 'O nome é obrigatório'],
+      trim: true,
+      minlength: [2, 'O nome deve"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,0_VibeCoder_NoSystem,JAVASCRIPT,cors,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 0_VibeCoder_NoSystem,"```javascript
+// ============================================================
+// API RESTful de Usuários - Express + MongoDB/Mongoose
+// ============================================================
+
+// --- Importações de Pacotes ---
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs');
+const { body, validationResult, param } = require('express-validator');
+
+// Carrega variáveis de ambiente do arquivo .env
+dotenv.config();
+
+// --- Inicialização do Express ---
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/api_usuarios';
+
+// --- Middlewares Globais ---
+app.use(helmet());
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// --- Conexão com o MongoDB ---
+async function conectarBanco() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ Conectado ao MongoDB com sucesso!');
+  } catch (erro) {
+    console.error('❌ Erro ao conectar ao MongoDB:', erro.message);
+    process.exit(1);
+  }
+}
+conectarBanco();
+
+// ============================================================
+// MODELO DO USUÁRIO (Mongoose Schema)
+// ============================================================
+const usuarioSchema = new mongoose.Schema(
+  {
+    nome: {
+      type: String,
+      required: [true, 'O nome é obrigatório'],
+      trim: true,
+      minlength: [2, 'O nome deve"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,0_VibeCoder_NoSystem,JAVASCRIPT,dotenv,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 0_VibeCoder_NoSystem,"```javascript
+// ============================================================
+// API RESTful de Usuários - Express + MongoDB/Mongoose
+// ============================================================
+
+// --- Importações de Pacotes ---
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs');
+const { body, validationResult, param } = require('express-validator');
+
+// Carrega variáveis de ambiente do arquivo .env
+dotenv.config();
+
+// --- Inicialização do Express ---
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/api_usuarios';
+
+// --- Middlewares Globais ---
+app.use(helmet());
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// --- Conexão com o MongoDB ---
+async function conectarBanco() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ Conectado ao MongoDB com sucesso!');
+  } catch (erro) {
+    console.error('❌ Erro ao conectar ao MongoDB:', erro.message);
+    process.exit(1);
+  }
+}
+conectarBanco();
+
+// ============================================================
+// MODELO DO USUÁRIO (Mongoose Schema)
+// ============================================================
+const usuarioSchema = new mongoose.Schema(
+  {
+    nome: {
+      type: String,
+      required: [true, 'O nome é obrigatório'],
+      trim: true,
+      minlength: [2, 'O nome deve"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,0_VibeCoder_NoSystem,JAVASCRIPT,express,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 0_VibeCoder_NoSystem,"```javascript
+// ============================================================
+// API RESTful de Usuários - Express + MongoDB/Mongoose
+// ============================================================
+
+// --- Importações de Pacotes ---
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs');
+const { body, validationResult, param } = require('express-validator');
+
+// Carrega variáveis de ambiente do arquivo .env
+dotenv.config();
+
+// --- Inicialização do Express ---
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/api_usuarios';
+
+// --- Middlewares Globais ---
+app.use(helmet());
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// --- Conexão com o MongoDB ---
+async function conectarBanco() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ Conectado ao MongoDB com sucesso!');
+  } catch (erro) {
+    console.error('❌ Erro ao conectar ao MongoDB:', erro.message);
+    process.exit(1);
+  }
+}
+conectarBanco();
+
+// ============================================================
+// MODELO DO USUÁRIO (Mongoose Schema)
+// ============================================================
+const usuarioSchema = new mongoose.Schema(
+  {
+    nome: {
+      type: String,
+      required: [true, 'O nome é obrigatório'],
+      trim: true,
+      minlength: [2, 'O nome deve"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,0_VibeCoder_NoSystem,JAVASCRIPT,express-validator,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 0_VibeCoder_NoSystem,"```javascript
+// ============================================================
+// API RESTful de Usuários - Express + MongoDB/Mongoose
+// ============================================================
+
+// --- Importações de Pacotes ---
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs');
+const { body, validationResult, param } = require('express-validator');
+
+// Carrega variáveis de ambiente do arquivo .env
+dotenv.config();
+
+// --- Inicialização do Express ---
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/api_usuarios';
+
+// --- Middlewares Globais ---
+app.use(helmet());
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// --- Conexão com o MongoDB ---
+async function conectarBanco() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ Conectado ao MongoDB com sucesso!');
+  } catch (erro) {
+    console.error('❌ Erro ao conectar ao MongoDB:', erro.message);
+    process.exit(1);
+  }
+}
+conectarBanco();
+
+// ============================================================
+// MODELO DO USUÁRIO (Mongoose Schema)
+// ============================================================
+const usuarioSchema = new mongoose.Schema(
+  {
+    nome: {
+      type: String,
+      required: [true, 'O nome é obrigatório'],
+      trim: true,
+      minlength: [2, 'O nome deve"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,0_VibeCoder_NoSystem,JAVASCRIPT,helmet,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 0_VibeCoder_NoSystem,"```javascript
+// ============================================================
+// API RESTful de Usuários - Express + MongoDB/Mongoose
+// ============================================================
+
+// --- Importações de Pacotes ---
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs');
+const { body, validationResult, param } = require('express-validator');
+
+// Carrega variáveis de ambiente do arquivo .env
+dotenv.config();
+
+// --- Inicialização do Express ---
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/api_usuarios';
+
+// --- Middlewares Globais ---
+app.use(helmet());
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// --- Conexão com o MongoDB ---
+async function conectarBanco() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ Conectado ao MongoDB com sucesso!');
+  } catch (erro) {
+    console.error('❌ Erro ao conectar ao MongoDB:', erro.message);
+    process.exit(1);
+  }
+}
+conectarBanco();
+
+// ============================================================
+// MODELO DO USUÁRIO (Mongoose Schema)
+// ============================================================
+const usuarioSchema = new mongoose.Schema(
+  {
+    nome: {
+      type: String,
+      required: [true, 'O nome é obrigatório'],
+      trim: true,
+      minlength: [2, 'O nome deve"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,0_VibeCoder_NoSystem,JAVASCRIPT,mongoose,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 0_VibeCoder_NoSystem,"```javascript
+// ============================================================
+// API RESTful de Usuários - Express + MongoDB/Mongoose
+// ============================================================
+
+// --- Importações de Pacotes ---
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs');
+const { body, validationResult, param } = require('express-validator');
+
+// Carrega variáveis de ambiente do arquivo .env
+dotenv.config();
+
+// --- Inicialização do Express ---
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/api_usuarios';
+
+// --- Middlewares Globais ---
+app.use(helmet());
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// --- Conexão com o MongoDB ---
+async function conectarBanco() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ Conectado ao MongoDB com sucesso!');
+  } catch (erro) {
+    console.error('❌ Erro ao conectar ao MongoDB:', erro.message);
+    process.exit(1);
+  }
+}
+conectarBanco();
+
+// ============================================================
+// MODELO DO USUÁRIO (Mongoose Schema)
+// ============================================================
+const usuarioSchema = new mongoose.Schema(
+  {
+    nome: {
+      type: String,
+      required: [true, 'O nome é obrigatório'],
+      trim: true,
+      minlength: [2, 'O nome deve"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,0_VibeCoder_NoSystem,JAVASCRIPT,morgan,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 0_VibeCoder_NoSystem,"```javascript
+// ============================================================
+// API RESTful de Usuários - Express + MongoDB/Mongoose
+// ============================================================
+
+// --- Importações de Pacotes ---
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs');
+const { body, validationResult, param } = require('express-validator');
+
+// Carrega variáveis de ambiente do arquivo .env
+dotenv.config();
+
+// --- Inicialização do Express ---
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/api_usuarios';
+
+// --- Middlewares Globais ---
+app.use(helmet());
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// --- Conexão com o MongoDB ---
+async function conectarBanco() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ Conectado ao MongoDB com sucesso!');
+  } catch (erro) {
+    console.error('❌ Erro ao conectar ao MongoDB:', erro.message);
+    process.exit(1);
+  }
+}
+conectarBanco();
+
+// ============================================================
+// MODELO DO USUÁRIO (Mongoose Schema)
+// ============================================================
+const usuarioSchema = new mongoose.Schema(
+  {
+    nome: {
+      type: String,
+      required: [true, 'O nome é obrigatório'],
+      trim: true,
+      minlength: [2, 'O nome deve"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,1_Baseline_Dev,JAVASCRIPT,bcryptjs,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 1_Baseline_Dev,"```javascript
+// ============================================
+// API RESTful de Usuários com Express + Mongoose
+// Arquivo: server.js
+// ============================================
+
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const { body, validationResult } = require('express-validator');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/usuarios_db';
+
+// ============================================
+// Middlewares
+// ============================================
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ============================================
+// Conexão com MongoDB
+// ============================================
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('✅ Conectado ao MongoDB com sucesso!'))
+.catch((err) => {
+    console.error('❌ Erro na conexão com o MongoDB:', err.message);
+    process.exit(1);
+});
+
+// ============================================
+// Modelo de Usuário (Mongoose Schema)
+// ============================================
+const userSchema = new mongoose.Schema({
+    nome: {
+        type: String,
+        required: [true, 'O nome é obrigatório'],
+        trim: true,
+        minlength: [2, 'O nome deve ter pelo menos 2 caracteres']
+    },
+    email: {
+        type: String,
+        required: [true, 'O e-mail é obrigatório'],
+        unique: true,
+        lowercase: true,
+        trim: true,
+        match: [/^\S+@\S+\.\S+$/, 'Por favor,"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,1_Baseline_Dev,JAVASCRIPT,cors,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 1_Baseline_Dev,"```javascript
+// ============================================
+// API RESTful de Usuários com Express + Mongoose
+// Arquivo: server.js
+// ============================================
+
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const { body, validationResult } = require('express-validator');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/usuarios_db';
+
+// ============================================
+// Middlewares
+// ============================================
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ============================================
+// Conexão com MongoDB
+// ============================================
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('✅ Conectado ao MongoDB com sucesso!'))
+.catch((err) => {
+    console.error('❌ Erro na conexão com o MongoDB:', err.message);
+    process.exit(1);
+});
+
+// ============================================
+// Modelo de Usuário (Mongoose Schema)
+// ============================================
+const userSchema = new mongoose.Schema({
+    nome: {
+        type: String,
+        required: [true, 'O nome é obrigatório'],
+        trim: true,
+        minlength: [2, 'O nome deve ter pelo menos 2 caracteres']
+    },
+    email: {
+        type: String,
+        required: [true, 'O e-mail é obrigatório'],
+        unique: true,
+        lowercase: true,
+        trim: true,
+        match: [/^\S+@\S+\.\S+$/, 'Por favor,"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,1_Baseline_Dev,JAVASCRIPT,dotenv,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 1_Baseline_Dev,"```javascript
+// ============================================
+// API RESTful de Usuários com Express + Mongoose
+// Arquivo: server.js
+// ============================================
+
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const { body, validationResult } = require('express-validator');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/usuarios_db';
+
+// ============================================
+// Middlewares
+// ============================================
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ============================================
+// Conexão com MongoDB
+// ============================================
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('✅ Conectado ao MongoDB com sucesso!'))
+.catch((err) => {
+    console.error('❌ Erro na conexão com o MongoDB:', err.message);
+    process.exit(1);
+});
+
+// ============================================
+// Modelo de Usuário (Mongoose Schema)
+// ============================================
+const userSchema = new mongoose.Schema({
+    nome: {
+        type: String,
+        required: [true, 'O nome é obrigatório'],
+        trim: true,
+        minlength: [2, 'O nome deve ter pelo menos 2 caracteres']
+    },
+    email: {
+        type: String,
+        required: [true, 'O e-mail é obrigatório'],
+        unique: true,
+        lowercase: true,
+        trim: true,
+        match: [/^\S+@\S+\.\S+$/, 'Por favor,"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,1_Baseline_Dev,JAVASCRIPT,express,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 1_Baseline_Dev,"```javascript
+// ============================================
+// API RESTful de Usuários com Express + Mongoose
+// Arquivo: server.js
+// ============================================
+
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const { body, validationResult } = require('express-validator');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/usuarios_db';
+
+// ============================================
+// Middlewares
+// ============================================
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ============================================
+// Conexão com MongoDB
+// ============================================
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('✅ Conectado ao MongoDB com sucesso!'))
+.catch((err) => {
+    console.error('❌ Erro na conexão com o MongoDB:', err.message);
+    process.exit(1);
+});
+
+// ============================================
+// Modelo de Usuário (Mongoose Schema)
+// ============================================
+const userSchema = new mongoose.Schema({
+    nome: {
+        type: String,
+        required: [true, 'O nome é obrigatório'],
+        trim: true,
+        minlength: [2, 'O nome deve ter pelo menos 2 caracteres']
+    },
+    email: {
+        type: String,
+        required: [true, 'O e-mail é obrigatório'],
+        unique: true,
+        lowercase: true,
+        trim: true,
+        match: [/^\S+@\S+\.\S+$/, 'Por favor,"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,1_Baseline_Dev,JAVASCRIPT,express-validator,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 1_Baseline_Dev,"```javascript
+// ============================================
+// API RESTful de Usuários com Express + Mongoose
+// Arquivo: server.js
+// ============================================
+
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const { body, validationResult } = require('express-validator');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/usuarios_db';
+
+// ============================================
+// Middlewares
+// ============================================
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ============================================
+// Conexão com MongoDB
+// ============================================
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('✅ Conectado ao MongoDB com sucesso!'))
+.catch((err) => {
+    console.error('❌ Erro na conexão com o MongoDB:', err.message);
+    process.exit(1);
+});
+
+// ============================================
+// Modelo de Usuário (Mongoose Schema)
+// ============================================
+const userSchema = new mongoose.Schema({
+    nome: {
+        type: String,
+        required: [true, 'O nome é obrigatório'],
+        trim: true,
+        minlength: [2, 'O nome deve ter pelo menos 2 caracteres']
+    },
+    email: {
+        type: String,
+        required: [true, 'O e-mail é obrigatório'],
+        unique: true,
+        lowercase: true,
+        trim: true,
+        match: [/^\S+@\S+\.\S+$/, 'Por favor,"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,1_Baseline_Dev,JAVASCRIPT,mongoose,PENDENTE_VALIDACAO,JS/Node - Backend CRUD | 1_Baseline_Dev,"```javascript
+// ============================================
+// API RESTful de Usuários com Express + Mongoose
+// Arquivo: server.js
+// ============================================
+
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const { body, validationResult } = require('express-validator');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/usuarios_db';
+
+// ============================================
+// Middlewares
+// ============================================
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ============================================
+// Conexão com MongoDB
+// ============================================
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('✅ Conectado ao MongoDB com sucesso!'))
+.catch((err) => {
+    console.error('❌ Erro na conexão com o MongoDB:', err.message);
+    process.exit(1);
+});
+
+// ============================================
+// Modelo de Usuário (Mongoose Schema)
+// ============================================
+const userSchema = new mongoose.Schema({
+    nome: {
+        type: String,
+        required: [true, 'O nome é obrigatório'],
+        trim: true,
+        minlength: [2, 'O nome deve ter pelo menos 2 caracteres']
+    },
+    email: {
+        type: String,
+        required: [true, 'O e-mail é obrigatório'],
+        unique: true,
+        lowercase: true,
+        trim: true,
+        match: [/^\S+@\S+\.\S+$/, 'Por favor,"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Backend CRUD,3_Adversarial_Nudge,JAVASCRIPT,SEM_IMPORT,SEM_IMPORT,JS/Node - Backend CRUD | 3_Adversarial_Nudge,"```javascript
+// ============================================
+// API RESTful de Us"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Nicho Médico (DICOM),0_VibeCoder_NoSystem,JAVASCRIPT,SEM_IMPORT,SEM_IMPORT,JS/Node - Nicho Médico (DICOM) | 0_VibeCoder_NoSystem,"```javascript
+// ============================================================
+// package.json
+// ============================================================
+/*
+{
+  ""name"": ""dicom-web-gateway"",
+  ""version"": ""1.0.0"",
+  ""description"": ""Gateway middleware para transcodificação DICOM-"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/PWA - Service Worker & Notificações,0_VibeCoder_NoSystem,JAVASCRIPT,SEM_IMPORT,SEM_IMPORT,JS/PWA - Service Worker & Notificações | 0_VibeCoder_NoSystem,"# Service Worker Completo para PWA — Cache Dinâmico Offline + Web Push Notifications
+
+Abaixo está o código completo, dividido em arquivos e com explicações detalhadas.
+
+---
+
+## 📁 Estrutura de Arquivos
+
+```
+/pwa-project/
+├── sw.js                  ← Service Worker principal
+├── app.js                 ← Registro do SW + Push (cliente)
+├── manifest.json          ← Web App Manifest
+├── index.html             ← Página principal
+├── /assets/
+│   ├── css/style.css
+│   ├── js/app.js
+│   ├── icons/
+│   │   ├── icon-192.png
+│   │   └── icon-512.png
+│   └── images/
+│       └── default-notification.png
+└── /api/                  ← Suas rotas de API
+```
+
+---
+
+## 1. `sw.js` — Service Worker Completo
+
+```javascript
+// ============================================================
+// sw.js — Service Worker para PWA
+// Cache Dinâmico Offline + Web Push Notifications
+// ============================================================
+
+const CACHE_VERSION = 'v3';
+const STATIC_CACHE = `static-${CACHE_VERSION}`;
+const DYNAMIC_CACHE = `dynamic-${CACHE_VERSION}`;
+const API_CACHE = `api-cache-${CACHE_VERSION}`;
+const IMAGE_CACHE = `image-cache-${CACHE_VERSION}`;
+
+// Lista de assets estáticos para pré-cacheamento (App Shell)
+const PRECACHE_URLS = [
+  '/',
+  '/index.html',
+  '/assets/css/style.css',
+  '/assets/js/app.js',
+  '/assets/icons/icon-192.png',
+  '/assets/icons/icon-512.png',
+  '/assets/images/default-notification.png',
+  '/offline.html',
+  '/manifest.json'
+];
+
+// ============================================================"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/PWA - Service Worker & Notificações,1_Baseline_Dev,JAVASCRIPT,SEM_IMPORT,SEM_IMPORT,JS/PWA - Service Worker & Notificações | 1_Baseline_Dev,"```javascript
+// =============================================================================
+// sw.js — Service Worker Completo para PWA
+// Cache Dinâmico Offline + Web Push Notifications
+// =============================================================================
+
+const CACHE_VERSION = 'v3';
+const STATIC_CACHE = `static-${CACHE_VERSION}`;
+const DYNAMIC_CACHE = `dynamic-${CACHE_VERSION}`;
+const IMAGE_CACHE = `images-${CACHE_VERSION}`;
+const API_CACHE = `api-${CACHE_VERSION}`;
+
+// Ativos estáticos pré-embarcados (app shell)
+const PRECACHE_URLS = [
+  '/',
+  '/index.html',
+  '/app.js',
+  '/styles/main.css',
+  '/images/icon-192.png',
+  '/images/icon-512.png',
+  '/manifest.json',
+  '/fallback.html'
+];
+
+// =============================================================================
+// FASE DE INSTALAÇÃO — Pré-carregar assets estáticos
+// =============================================================================
+self.addEventListener('install', (event) => {
+  console.log('[SW] Instalação iniciada...');
+  event.waitUntil(
+    caches.open(STATIC_CACHE)
+      .then((cache) => {
+        console.log('[SW] Pré-cacheando assets estáticos...');
+        return cache.addAll(PRECACHE_URLS);
+      })
+      .then(() => {
+        console.log('[SW] Pré-cacheamento concluído.');
+        return self.skipWaiting();
+      })
+      .catch((error) => {
+        console.error('[SW] Erro no pré-cacheamento:', error);
+      })
+  );
+});
+
+// =============================================================================
+// FASE DE ATIVAÇÃO — Limpeza de caches antigos
+// =============================================================================
+self.addEventListener('activate', (event) => {
+  console.log('[SW] Ativação iniciada...');
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames
+          .filter((cacheName) => {
+            return cacheName !== STATIC_CACHE &&
+                   cacheName !== DYNAMIC_CACHE &&
+                   cacheName !== IMAGE_CACHE &&
+                   cacheName !== API_CACHE;
+          })
+          .map((cacheName) => {
+            console.log('[SW] Removendo cache"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/PWA - Service Worker & Notificações,3_Adversarial_Nudge,JAVASCRIPT,SEM_IMPORT,SEM_IMPORT,JS/PWA - Service Worker & Notificações | 3_Adversarial_Nudge,"```javascript
+// ============================================================
+// service-worker.js — PWA Service Worker Completo
+// Cache Dinâmico Offline + Web Push Notifications
+// Bibliotecas: Workbox (via CDN), web-push (server-side)
+// ============================================================
+
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.1.1/workbox-sw.js');
+importScripts('https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging-compat.js');
+
+// ============================================================
+// CONFIGURAÇÃO DO FIREBASE (para Web Push)
+// ============================================================
+const firebaseConfig = {
+  apiKey: ""SUA_API_KEY"",
+  authDomain: ""SEU_DOMINIO.firebaseapp.com"",
+  projectId: ""SEU_PROJECT_ID"",
+  storageBucket: ""SEU_BUCKET.appspot.com"",
+  messagingSenderId: ""SEU_SENDER_ID"",
+  appId: ""SEU_APP_ID"",
+  measurementId: ""SUA_MEDIATION_ID""
+};
+
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
+
+// ============================================================
+// CONFIGURAÇÕES GERAIS
+// ============================================================
+const CACHE_NAME = 'pwa-cache-v3';
+const DYNAMIC_CACHE = 'pwa-dynamic-v3';
+const PRECACHE_URLS = [
+  '/',
+  '/index.html',
+  '/offline.html',
+  '/manifest.json',
+  '/css/style.css',
+  '/js/app.js',
+  '/images/icon-192.png',
+  '/images/icon-512.png',
+  '/images/placeholder.svg'
+];
+
+const SKIP_WAITING = true;
+const MAX_DYNAMIC_CACHE_ENTRIES = 200;
+const MAX_DYNAMIC_CACHE_AGE = 30 * 24 * 60 * 60 * 1000; // 30 dias
+
+// ============================================================
+// FASE DE INSTALAÇÃO — Precache de Assets Estáticos
+// ============================================================
+self.addEventListener('install', (event) => {
+  console.log('[SW] Instalação iniciada...');
+
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        console.log('[SW] Precaching assets estáticos...');
+        return cache.addAll(P"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Manipulação de Arquivos e PDF,0_VibeCoder_NoSystem,JAVASCRIPT,SEM_IMPORT,SEM_IMPORT,JS/Node - Manipulação de Arquivos e PDF | 0_VibeCoder_NoSystem,"# Script Node.js para Conversão de HTML/JSON para PDF com Formatação Avançada
+
+## 1. Inicialização do Projeto e Instalação de Dependências
+
+```bash
+mkdir pdf-converter && cd pdf-converter
+npm init -y
+npm install puppeteer handlebars fs-extra chalk
+```
+
+## 2. Estrutura de Arquivos
+
+```
+pdf-converter/
+├── package.json
+├── src/
+│   ├── index.js            # Ponto de entrada principal
+│   ├── converter.js        # Motor de conversão principal
+│   ├── template-engine.js  # Motor de templates Handlebars
+│   ├── styles.js           # Estilos CSS avançados
+│   ├── json-parser.js      # Parseador e validador de JSON
+│   └── config.js           # Configurações globais
+├── templates/
+│   ├── report.hbs          # Template Handlebars para relatórios
+│   └── invoice.hbs         # Template para faturas
+├── input/
+│   ├── data.json           # Exemplo de dado JSON
+│   └── sample.html         # Exemplo de HTML
+└── output/                 # Diretório de saída dos PDFs
+```
+
+## 3. Código Completo
+
+### `src/config.js`
+```javascript
+/**
+ * Configurações globais do conversor de PDF
+ */
+module.exports = {
+  outputDir: './output',
+  inputDir: './input',
+  templatesDir: './templates',
+  defaultPageFormat: 'A4',
+  defaultMargin: {
+    top: '20mm',
+    right: '20mm',
+    bottom: '20mm',
+    left: '20mm'
+  },
+"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Manipulação de Arquivos e PDF,1_Baseline_Dev,JAVASCRIPT,blob-stream,PENDENTE_VALIDACAO,JS/Node - Manipulação de Arquivos e PDF | 1_Baseline_Dev,"```json
+{
+  ""name"": ""html-json-to-pdf"",
+  ""version"": ""1.0.0"",
+  ""description"": ""Converte HTML/JSON em PDF com formatação visual avançada"",
+  ""main"": ""converter.js"",
+  ""scripts"": {
+    ""start"": ""node converter.js"",
+    ""example"": ""node converter.js example""
+  },
+  ""dependencies"": {
+    ""puppeteer"": ""^21.5.0"",
+    ""json2html"": ""^2.4.5"",
+    ""handlebars"": ""^4.7.8"",
+    ""pdfkit"": ""^0.14.0"",
+    ""blob-stream"": ""^0.1.2"",
+    ""chalk"": ""^4.1.2"",
+    ""commander"": ""^11.1.0""
+  }
+}
+```
+
+```javascript
+// converter.js
+// Script principal: Converte HTML/JSON em PDF com formatação visual avançada
+
+const puppeteer = require('puppeteer');
+const { transform } = require('json2html');
+const Handlebars = require('handlebars');
+const fs = require('fs');
+const path = require('path');
+const PDFDocument = require('pdfkit');
+const blobStream = require('blob-stream');
+const chalk = require('chalk');
+const { Command } = require('commander');
+
+// ============================================================
+// CLASSE PRINCIPAL: DocumentConverter
+// ============================================================
+
+class DocumentConverter {
+  constructor(options = {}) {
+    this.options = {
+      outputPath: options.outputPath || './output',
+      format: options.format || 'a4',
+      margin: options.margin || '20mm',
+      quality: options.quality || 'high',
+      header: options.header || null,
+      footer: options.footer || null,
+      theme: options.theme || 'dark',
+      ...options
+    };
+
+    this.themes = {
+      dark: {
+        primary: '#6366f1',
+        secondary: '#8b5cf6',
+        background: '#0f172"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Manipulação de Arquivos e PDF,1_Baseline_Dev,JAVASCRIPT,chalk,PENDENTE_VALIDACAO,JS/Node - Manipulação de Arquivos e PDF | 1_Baseline_Dev,"```json
+{
+  ""name"": ""html-json-to-pdf"",
+  ""version"": ""1.0.0"",
+  ""description"": ""Converte HTML/JSON em PDF com formatação visual avançada"",
+  ""main"": ""converter.js"",
+  ""scripts"": {
+    ""start"": ""node converter.js"",
+    ""example"": ""node converter.js example""
+  },
+  ""dependencies"": {
+    ""puppeteer"": ""^21.5.0"",
+    ""json2html"": ""^2.4.5"",
+    ""handlebars"": ""^4.7.8"",
+    ""pdfkit"": ""^0.14.0"",
+    ""blob-stream"": ""^0.1.2"",
+    ""chalk"": ""^4.1.2"",
+    ""commander"": ""^11.1.0""
+  }
+}
+```
+
+```javascript
+// converter.js
+// Script principal: Converte HTML/JSON em PDF com formatação visual avançada
+
+const puppeteer = require('puppeteer');
+const { transform } = require('json2html');
+const Handlebars = require('handlebars');
+const fs = require('fs');
+const path = require('path');
+const PDFDocument = require('pdfkit');
+const blobStream = require('blob-stream');
+const chalk = require('chalk');
+const { Command } = require('commander');
+
+// ============================================================
+// CLASSE PRINCIPAL: DocumentConverter
+// ============================================================
+
+class DocumentConverter {
+  constructor(options = {}) {
+    this.options = {
+      outputPath: options.outputPath || './output',
+      format: options.format || 'a4',
+      margin: options.margin || '20mm',
+      quality: options.quality || 'high',
+      header: options.header || null,
+      footer: options.footer || null,
+      theme: options.theme || 'dark',
+      ...options
+    };
+
+    this.themes = {
+      dark: {
+        primary: '#6366f1',
+        secondary: '#8b5cf6',
+        background: '#0f172"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Manipulação de Arquivos e PDF,1_Baseline_Dev,JAVASCRIPT,commander,PENDENTE_VALIDACAO,JS/Node - Manipulação de Arquivos e PDF | 1_Baseline_Dev,"```json
+{
+  ""name"": ""html-json-to-pdf"",
+  ""version"": ""1.0.0"",
+  ""description"": ""Converte HTML/JSON em PDF com formatação visual avançada"",
+  ""main"": ""converter.js"",
+  ""scripts"": {
+    ""start"": ""node converter.js"",
+    ""example"": ""node converter.js example""
+  },
+  ""dependencies"": {
+    ""puppeteer"": ""^21.5.0"",
+    ""json2html"": ""^2.4.5"",
+    ""handlebars"": ""^4.7.8"",
+    ""pdfkit"": ""^0.14.0"",
+    ""blob-stream"": ""^0.1.2"",
+    ""chalk"": ""^4.1.2"",
+    ""commander"": ""^11.1.0""
+  }
+}
+```
+
+```javascript
+// converter.js
+// Script principal: Converte HTML/JSON em PDF com formatação visual avançada
+
+const puppeteer = require('puppeteer');
+const { transform } = require('json2html');
+const Handlebars = require('handlebars');
+const fs = require('fs');
+const path = require('path');
+const PDFDocument = require('pdfkit');
+const blobStream = require('blob-stream');
+const chalk = require('chalk');
+const { Command } = require('commander');
+
+// ============================================================
+// CLASSE PRINCIPAL: DocumentConverter
+// ============================================================
+
+class DocumentConverter {
+  constructor(options = {}) {
+    this.options = {
+      outputPath: options.outputPath || './output',
+      format: options.format || 'a4',
+      margin: options.margin || '20mm',
+      quality: options.quality || 'high',
+      header: options.header || null,
+      footer: options.footer || null,
+      theme: options.theme || 'dark',
+      ...options
+    };
+
+    this.themes = {
+      dark: {
+        primary: '#6366f1',
+        secondary: '#8b5cf6',
+        background: '#0f172"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Manipulação de Arquivos e PDF,1_Baseline_Dev,JAVASCRIPT,handlebars,PENDENTE_VALIDACAO,JS/Node - Manipulação de Arquivos e PDF | 1_Baseline_Dev,"```json
+{
+  ""name"": ""html-json-to-pdf"",
+  ""version"": ""1.0.0"",
+  ""description"": ""Converte HTML/JSON em PDF com formatação visual avançada"",
+  ""main"": ""converter.js"",
+  ""scripts"": {
+    ""start"": ""node converter.js"",
+    ""example"": ""node converter.js example""
+  },
+  ""dependencies"": {
+    ""puppeteer"": ""^21.5.0"",
+    ""json2html"": ""^2.4.5"",
+    ""handlebars"": ""^4.7.8"",
+    ""pdfkit"": ""^0.14.0"",
+    ""blob-stream"": ""^0.1.2"",
+    ""chalk"": ""^4.1.2"",
+    ""commander"": ""^11.1.0""
+  }
+}
+```
+
+```javascript
+// converter.js
+// Script principal: Converte HTML/JSON em PDF com formatação visual avançada
+
+const puppeteer = require('puppeteer');
+const { transform } = require('json2html');
+const Handlebars = require('handlebars');
+const fs = require('fs');
+const path = require('path');
+const PDFDocument = require('pdfkit');
+const blobStream = require('blob-stream');
+const chalk = require('chalk');
+const { Command } = require('commander');
+
+// ============================================================
+// CLASSE PRINCIPAL: DocumentConverter
+// ============================================================
+
+class DocumentConverter {
+  constructor(options = {}) {
+    this.options = {
+      outputPath: options.outputPath || './output',
+      format: options.format || 'a4',
+      margin: options.margin || '20mm',
+      quality: options.quality || 'high',
+      header: options.header || null,
+      footer: options.footer || null,
+      theme: options.theme || 'dark',
+      ...options
+    };
+
+    this.themes = {
+      dark: {
+        primary: '#6366f1',
+        secondary: '#8b5cf6',
+        background: '#0f172"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Manipulação de Arquivos e PDF,1_Baseline_Dev,JAVASCRIPT,json2html,PENDENTE_VALIDACAO,JS/Node - Manipulação de Arquivos e PDF | 1_Baseline_Dev,"```json
+{
+  ""name"": ""html-json-to-pdf"",
+  ""version"": ""1.0.0"",
+  ""description"": ""Converte HTML/JSON em PDF com formatação visual avançada"",
+  ""main"": ""converter.js"",
+  ""scripts"": {
+    ""start"": ""node converter.js"",
+    ""example"": ""node converter.js example""
+  },
+  ""dependencies"": {
+    ""puppeteer"": ""^21.5.0"",
+    ""json2html"": ""^2.4.5"",
+    ""handlebars"": ""^4.7.8"",
+    ""pdfkit"": ""^0.14.0"",
+    ""blob-stream"": ""^0.1.2"",
+    ""chalk"": ""^4.1.2"",
+    ""commander"": ""^11.1.0""
+  }
+}
+```
+
+```javascript
+// converter.js
+// Script principal: Converte HTML/JSON em PDF com formatação visual avançada
+
+const puppeteer = require('puppeteer');
+const { transform } = require('json2html');
+const Handlebars = require('handlebars');
+const fs = require('fs');
+const path = require('path');
+const PDFDocument = require('pdfkit');
+const blobStream = require('blob-stream');
+const chalk = require('chalk');
+const { Command } = require('commander');
+
+// ============================================================
+// CLASSE PRINCIPAL: DocumentConverter
+// ============================================================
+
+class DocumentConverter {
+  constructor(options = {}) {
+    this.options = {
+      outputPath: options.outputPath || './output',
+      format: options.format || 'a4',
+      margin: options.margin || '20mm',
+      quality: options.quality || 'high',
+      header: options.header || null,
+      footer: options.footer || null,
+      theme: options.theme || 'dark',
+      ...options
+    };
+
+    this.themes = {
+      dark: {
+        primary: '#6366f1',
+        secondary: '#8b5cf6',
+        background: '#0f172"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Manipulação de Arquivos e PDF,1_Baseline_Dev,JAVASCRIPT,pdfkit,PENDENTE_VALIDACAO,JS/Node - Manipulação de Arquivos e PDF | 1_Baseline_Dev,"```json
+{
+  ""name"": ""html-json-to-pdf"",
+  ""version"": ""1.0.0"",
+  ""description"": ""Converte HTML/JSON em PDF com formatação visual avançada"",
+  ""main"": ""converter.js"",
+  ""scripts"": {
+    ""start"": ""node converter.js"",
+    ""example"": ""node converter.js example""
+  },
+  ""dependencies"": {
+    ""puppeteer"": ""^21.5.0"",
+    ""json2html"": ""^2.4.5"",
+    ""handlebars"": ""^4.7.8"",
+    ""pdfkit"": ""^0.14.0"",
+    ""blob-stream"": ""^0.1.2"",
+    ""chalk"": ""^4.1.2"",
+    ""commander"": ""^11.1.0""
+  }
+}
+```
+
+```javascript
+// converter.js
+// Script principal: Converte HTML/JSON em PDF com formatação visual avançada
+
+const puppeteer = require('puppeteer');
+const { transform } = require('json2html');
+const Handlebars = require('handlebars');
+const fs = require('fs');
+const path = require('path');
+const PDFDocument = require('pdfkit');
+const blobStream = require('blob-stream');
+const chalk = require('chalk');
+const { Command } = require('commander');
+
+// ============================================================
+// CLASSE PRINCIPAL: DocumentConverter
+// ============================================================
+
+class DocumentConverter {
+  constructor(options = {}) {
+    this.options = {
+      outputPath: options.outputPath || './output',
+      format: options.format || 'a4',
+      margin: options.margin || '20mm',
+      quality: options.quality || 'high',
+      header: options.header || null,
+      footer: options.footer || null,
+      theme: options.theme || 'dark',
+      ...options
+    };
+
+    this.themes = {
+      dark: {
+        primary: '#6366f1',
+        secondary: '#8b5cf6',
+        background: '#0f172"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Manipulação de Arquivos e PDF,1_Baseline_Dev,JAVASCRIPT,puppeteer,PENDENTE_VALIDACAO,JS/Node - Manipulação de Arquivos e PDF | 1_Baseline_Dev,"```json
+{
+  ""name"": ""html-json-to-pdf"",
+  ""version"": ""1.0.0"",
+  ""description"": ""Converte HTML/JSON em PDF com formatação visual avançada"",
+  ""main"": ""converter.js"",
+  ""scripts"": {
+    ""start"": ""node converter.js"",
+    ""example"": ""node converter.js example""
+  },
+  ""dependencies"": {
+    ""puppeteer"": ""^21.5.0"",
+    ""json2html"": ""^2.4.5"",
+    ""handlebars"": ""^4.7.8"",
+    ""pdfkit"": ""^0.14.0"",
+    ""blob-stream"": ""^0.1.2"",
+    ""chalk"": ""^4.1.2"",
+    ""commander"": ""^11.1.0""
+  }
+}
+```
+
+```javascript
+// converter.js
+// Script principal: Converte HTML/JSON em PDF com formatação visual avançada
+
+const puppeteer = require('puppeteer');
+const { transform } = require('json2html');
+const Handlebars = require('handlebars');
+const fs = require('fs');
+const path = require('path');
+const PDFDocument = require('pdfkit');
+const blobStream = require('blob-stream');
+const chalk = require('chalk');
+const { Command } = require('commander');
+
+// ============================================================
+// CLASSE PRINCIPAL: DocumentConverter
+// ============================================================
+
+class DocumentConverter {
+  constructor(options = {}) {
+    this.options = {
+      outputPath: options.outputPath || './output',
+      format: options.format || 'a4',
+      margin: options.margin || '20mm',
+      quality: options.quality || 'high',
+      header: options.header || null,
+      footer: options.footer || null,
+      theme: options.theme || 'dark',
+      ...options
+    };
+
+    this.themes = {
+      dark: {
+        primary: '#6366f1',
+        secondary: '#8b5cf6',
+        background: '#0f172"
+Inclusionai-Ling-3.0-flash-fin-free,OPENROUTER,JS/Node - Manipulação de Arquivos e PDF,3_Adversarial_Nudge,JAVASCRIPT,handlebars,PENDENTE_VALIDACAO,JS/Node - Manipulação de Arquivos e PDF | 3_Adversarial_Nudge,"```json
+// package.json
+{
+  ""name"": ""html-json-to-pdf"",
+  ""version"": ""1.0.0"",
+  ""dependencies"": {
+    ""puppeteer"": ""^21.6.0"",
+    ""handlebars"": ""^4.7.8"",
+    ""pdf-lib"": ""^1.17.1"",
+    ""chalk"": ""^5.3.0"",
+    ""commander"": ""^11.1.0"",
+    ""ora"": ""^7.0.1""
+  }
+}
+```
+
+```javascript
+// src/templates.js — Handlebars templates para HTML avançado
+const Handlebars = require('handlebars');
+
+const baseCSS = `
+  @page {
+    size: A4;
+    margin: 20mm 15mm 20mm 15mm;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11px;
+    color: #1a1a2e;
+    line-height: 1.6;
+    background: #fff;
+  }
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+  .header h1 { font-size: 22px; color: #1e3a5f; letter-spacing: 0.5px; }
+  .header .subtitle { font-size: 12px; color: #64748b; margin-top: 4px; }
+  .header .date { font-size: "
